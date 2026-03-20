@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A calm and aesthetic Pomodoro timer application to stay focused and productive.">
+    <title>Calm Pomodoro</title>
+    <!-- Use Outfit font for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-overlay" id="bg-overlay"></div>
+    <div class="container">
+        <header class="header">
+            <img src="aesthetic_timer_icon.png" alt="Aesthetic Timer Icon" class="header-icon">
+            <h1>Pomodoro</h1>
+            <p>Stay focused, stay calm.</p>
+        </header>
+
+        <main class="timer-card">
+            <nav class="modes">
+                <button class="mode-btn active" data-mode="pomodoro" id="btn-pomodoro">Pomodoro</button>
+                <button class="mode-btn" data-mode="shortBreak" id="btn-short-break">Short Break</button>
+                <button class="mode-btn" data-mode="longBreak" id="btn-long-break">Long Break</button>
+            </nav>
+
+            <div class="time-display" id="time-display">
+                25:00
+            </div>
+
+            <div class="controls">
+                <button class="control-btn primary" id="start-btn">Start</button>
+                <button class="control-btn" id="pause-btn">Pause</button>
+                <button class="control-btn" id="reset-btn">Reset</button>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+:root {
+    /* Base Colors for different modes */
+    --bg-pomodoro: linear-gradient(135deg, #fdfbfb 0%, #fde4e4 100%);
+    --bg-shortBreak: linear-gradient(135deg, #e0effc 0%, #dcf0f2 100%);
+    --bg-longBreak: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    
+    /* Text */
+    --text-primary: #333;
+    --text-secondary: #666;
+    
+    /* Cards and Elements (Glassmorphism) */
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 255, 255, 0.5);
+    
+    /* Buttons */
+    --btn-bg: rgba(255, 255, 255, 0.7);
+    --btn-hover: rgba(255, 255, 255, 0.95);
+    --btn-primary-bg: #ffccd5; /* default for pomodoro */
+    --btn-primary-hover: #ffb3c1;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+#bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-pomodoro);
+    z-index: -1;
+    transition: background 1s ease;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.header-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+    mix-blend-mode: multiply;
+    object-fit: contain;
+}
+
+.header h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 2px;
+    background: -webkit-linear-gradient(45deg, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header p {
+    font-weight: 300;
+    margin: 0.5rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.timer-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    transition: transform 0.3s ease;
+}
+
+.timer-card:hover {
+    transform: translateY(-5px);
+}
+
+.modes {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2.5rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 40px;
+    padding: 0.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.mode-btn.active {
+    background: #fff;
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.time-display {
+    font-size: 7rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.05);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.control-btn {
+    background: var(--btn-bg);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.control-btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn.primary {
+    background: var(--btn-primary-bg);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.control-btn.primary:hover {
+    background: var(--btn-primary-hover);
+}
+
+#pause-btn {
+    display: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; text-shadow: 2px 4px 10px rgba(0,0,0,0.05); }
+    50% { transform: scale(1.05); opacity: 0.8; text-shadow: 4px 8px 20px rgba(0,0,0,0.1); }
+    100% { transform: scale(1); opacity: 1; text-shadow: 2px 4px 10px rgba(0,0,0,0.05); }
+}
+
+.pulse {
+    animation: pulse 2s ease infinite;
+}
